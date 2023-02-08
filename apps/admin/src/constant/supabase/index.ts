@@ -1,0 +1,4 @@
+export const SUPABASE_URL = 'https://bqgandmzwmlzpgdpjbse.supabase.co';
+
+export const SUPABASE_KEY =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJxZ2FuZG16d21senBnZHBqYnNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzU4MjU5OTQsImV4cCI6MTk5MTQwMTk5NH0.IVrxLzLytjqfYHfNCTvoLOCSXZ4He0YtmjFzSKR6pCM';

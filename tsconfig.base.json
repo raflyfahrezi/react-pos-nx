@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@react-pos/core": ["libs/core/src/index.ts"]
+      "@react-pos/admin/*": ["apps/admin/src/*"],
+      "@react-pos/core": ["libs/core/src/index.ts"],
+      "@react-pos/core-utils": ["libs/core-utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
