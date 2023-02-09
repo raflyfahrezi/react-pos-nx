@@ -17,6 +17,11 @@ const useHome = () => {
     metaData: {
       select: '*, product(name, price)',
     },
+    config: {
+      pagination: {
+        pageSize: 100,
+      },
+    },
   });
 
   return {

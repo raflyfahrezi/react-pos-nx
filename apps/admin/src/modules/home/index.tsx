@@ -63,8 +63,18 @@ const HomeModule = () => {
         <Card key="users" title="Total of Users" className={styles.card}>
           <p className={styles.cardText}>{userList?.data?.length}</p>
         </Card>
-        <Card key="purchasesGraph" title="Graph of Purchases">
-          <ReactECharts option={eChartOptions} />
+        <Card
+          key="purchasesGraph"
+          title="Graph of Purchases"
+          bodyStyle={{ height: '100%' }}
+        >
+          <ReactECharts
+            option={eChartOptions}
+            style={{
+              width: '100%',
+              height: '80%',
+            }}
+          />
         </Card>
         <Card key="revenue" title="Revenue" className={styles.card}>
           <p className={styles.cardText}>
