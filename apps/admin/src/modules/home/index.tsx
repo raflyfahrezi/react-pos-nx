@@ -1,14 +1,45 @@
+import { useState, useEffect } from 'react';
+import ReactECharts from 'echarts-for-react';
 import { List, Card } from '@pankod/refine-antd';
 
 import { formatNumberToRupiah } from '@react-pos/core-utils';
 
 import useHome from './hooks';
 import styles from './styles.module.css';
-import { headerProps, breakpoints, cols, layouts } from './helpers';
+import {
+  cols,
+  layouts,
+  headerProps,
+  breakpoints,
+  eChartOptionsDefault,
+  getPurchaseGroupedByCreatedAt,
+} from './helpers';
 
 const HomeModule = () => {
   const { productList, userList, purchaseList, ResponsiveGridLayout } =
     useHome();
+
+  const [eChartOptions, setEChartOptions] = useState({
+    ...eChartOptionsDefault,
+  });
+
+  useEffect(() => {
+    const groupedData = getPurchaseGroupedByCreatedAt(purchaseList?.data);
+
+    setEChartOptions((prev) => ({
+      ...prev,
+      xAxis: {
+        ...prev.xAxis,
+        data: groupedData?.dataX,
+      },
+      series: [
+        {
+          ...prev.series[0],
+          data: groupedData?.dataY,
+        },
+      ],
+    }));
+  }, [purchaseList]);
 
   return (
     <List headerProps={headerProps}>
@@ -33,7 +64,7 @@ const HomeModule = () => {
           <p className={styles.cardText}>{userList?.data?.length}</p>
         </Card>
         <Card key="purchasesGraph" title="Graph of Purchases">
-          <p>Hello World</p>
+          <ReactECharts option={eChartOptions} />
         </Card>
         <Card key="revenue" title="Revenue" className={styles.card}>
           <p className={styles.cardText}>
